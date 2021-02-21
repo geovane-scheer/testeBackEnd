@@ -1,6 +1,9 @@
 package com.dimed.testeBackend.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -10,10 +13,15 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.dimed.testeBackend.dto.LatLngDTO;
 import com.dimed.testeBackend.dto.LinhaOnibusDTO;
+import com.dimed.testeBackend.dto.RaioDTO;
+import com.dimed.testeBackend.model.Itinerario;
 import com.dimed.testeBackend.model.LinhaOnibus;
 import com.dimed.testeBackend.repo.LinhaOnibusRepository;
+import com.dimed.testeBackend.service.ItinerarioService;
 import com.dimed.testeBackend.service.LinhaOnibusService;
+import com.dimed.testeBackend.util.DistanciaUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -27,6 +35,9 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private ItinerarioService itinerarioService; 
 
 	@Override
 	public List<LinhaOnibus> findAll() {
@@ -68,6 +79,45 @@ public class LinhaOnibusServiceImpl implements LinhaOnibusService {
 	@Override
 	public List<LinhaOnibus> findByNomeIgnoreCase(String nome) {
 		return linhaOnibusRepository.findByNomeIgnoreCase(nome);
+	}
+
+	@Override
+	public LinhaOnibus saveOrUpdate(LinhaOnibus linhaOnibus) {
+		return linhaOnibusRepository.save(linhaOnibus);
+	}
+
+	@Override
+	public Optional<LinhaOnibus> findOne(String id) {
+		return linhaOnibusRepository.findById(id);
+	}
+
+	@Override
+	public void delete(String id) {
+		linhaOnibusRepository.deleteById(id);
+	}
+
+	@Override
+	public List<LinhaOnibus> buscarLinhasPorRadio(RaioDTO raioDTO) {
+		List<LinhaOnibus> retorno = new ArrayList<>();
+		
+		for(LinhaOnibus lo : linhaOnibusRepository.findAll()) {
+			List<Itinerario> itinerarios = itinerarioService.findByIdLinha(lo.getId());
+			if(!itinerarios.isEmpty()) {
+				for(Itinerario it : itinerarios) {
+					if(!it.getMapItinerario().isEmpty()) {
+						it.getMapItinerario().entrySet().forEach(mapDTO -> {
+							LatLngDTO latLngDTO = mapDTO.getValue();
+							Double distancia = DistanciaUtil.distanciaEmKm(raioDTO.getLatitude(), raioDTO.getLongitude(), Double.parseDouble(latLngDTO.getLat()), Double.parseDouble(latLngDTO.getLng()));
+							if(distancia <= raioDTO.getRaio()) {
+								retorno.add(lo);
+							}
+						});
+					}
+				}
+			}
+		}
+		
+		return retorno.stream().distinct().collect(Collectors.toList());
 	}
 
 }
