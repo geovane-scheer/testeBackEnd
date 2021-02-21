@@ -10,4 +10,6 @@ public interface LinhaOnibusRepository extends MongoRepository<LinhaOnibus, Stri
 
 	List<LinhaOnibus> findByNomeIgnoreCase(String nome);
 
+	LinhaOnibus findByCodigoIgnoreCase(String codigo);
+
 }
