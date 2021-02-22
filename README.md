@@ -56,3 +56,51 @@ Exemplo do body:\
 \
 \
 **ITINERÁRIOS**\
+-Cadastrar/Atualizar:\
+Descrição: Método para cadastrar ou atualizar um itinerário. A verificação para atualização é feito pelo atributo *id*.\
+Método: POST\
+URL: /testeBackEnd/itinerarios/\
+Formato requisição: JSON\
+Exemplo do body:\
+   [
+    {
+        
+        "idlinha": "66666666",
+        "nome": "geovane linha",
+        "codigo": "666-52",
+        "mapItinerario": {
+            "0": {
+                "lat": "-30.03155263324200000",
+                "lng": "-51.22779631648400000"
+            },
+            "1": {
+                "lat": "-32.13155263324200000",
+                "lng": "-61.92779631648400000"
+            }
+        }
+    }
+]
+\
+\
+-Consultar pelo ID:\
+Método: GET\
+URL: /testeBackEnd/itinerarios/{id} - informar o ID da itinerário que deseja-se consultar\
+exemplo: /testeBackEnd/itinerarios/60314da06d318e252e5fb1f1\
+\
+-Consultar pelo ID DA LINHA que o itinerário pertence:\
+Método: GET\
+URL: /testeBackEnd/itinerarios/byLinha/{idLinha} - infomar id da linha que deseja-se consultar o itinerário\
+exemplo: /testeBackEnd/itinerarios/byLinha/5518
+\
+Consultas TODAS:\
+Método: GET\
+URL: /testeBackEnd/itinerarios/all
+exemplo: /testeBackEnd/itinerarios/all\
+\
+-Deletar itinerario :\
+Método: DELETE\
+URL: /testeBackEnd/itinerarios/delete/{id} - informar o ID do itinerário que deseja-se excluir
+exemplo: /testeBackEnd/itinerarios/delete/60314da06d318e252e5fb1f1\
+\
+\
+
