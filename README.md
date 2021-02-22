@@ -1,6 +1,10 @@
 # testeBackEnd
 Avaliação técnica para desenvolvedor backend
 
+#### Justificativas
+Spring = facilita todo o processo de desenvolvimento na parte do java.\
+MongoDB: pois oferece um desempenho muito bom, e não há necessidade de fazer "JOIN" entre as tabelas, portanto não há necessidade bd relacional.
+
 #### Começando a integração
 
 Assim que o projeto estiver rodando, para que seja feita a carga inicial de dados, é necessário chamar o endpoint */testeBackEnd/linhaOnibus/integrar*, que é responsável pela integração das linhas de ônibus. Para completar a carga inicial é preciso chamar o endpoint */testeBackEnd/itinerarios/integrar*, que é responsável pela integração dos itinerários das linhas. Após esses dois passos os dados já estão disponíveis para consulta ou alteração.
@@ -121,9 +125,7 @@ Exemplo do body:\
         "dataHoraCadastro": "2020-02-10T16:14:34.828"
     }
 
-#### Justificativas
-Spring = facilita todo o processo de desenvolvimento na parte do java.\
-MongoDB: pois oferece um desempenho muito bom, e não há necessidade de fazer "JOIN" entre as tabelas, portanto não há necessidade bd relacional.
+
 
 
 
