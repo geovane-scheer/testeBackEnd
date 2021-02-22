@@ -9,7 +9,7 @@ Assim que o projeto estiver rodando, para que seja feita a carga inicial de dado
 ##### Operações Disponíveis
 
 *LINHAS DE ÔNIBUS*
--Cadastrar/Atualizar:__
+-Cadastrar/Atualizar:\
 Descrição: Método para cadastrar ou atualizar uma linha de ônibus. A verificação para atualização é feito pelo atributo *id*.
 Método: POST
 URL: /testeBackEnd/linhaOnibus/
