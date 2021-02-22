@@ -21,6 +21,7 @@ Exemplo do body:\
         "nome": "Teste Geovane UPDATE3"
     }
 \
+\
 -Consultar pelo ID:\
 Método: GET\
 URL: /testeBackEnd/linhaOnibus/{id} - informar o ID da linha que deseja-se consultar\
