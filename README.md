@@ -32,7 +32,7 @@ Método: GET\
 URL: /testeBackEnd/linhaOnibus/buscarPorNome?nome={nome} - infomar o NOME da linha que deseja-se consultar\
 exemplo: /testeBackEnd/linhaOnibus/buscarPorNome?nome=teste geovane update2\
 \
-Consultas TODAS:\
+Consultar TODAS:\
 Método: GET\
 URL: /testeBackEnd/linhaOnibus/all
 exemplo: /testeBackEnd/linhaOnibus/all\
@@ -62,7 +62,7 @@ Método: POST\
 URL: /testeBackEnd/itinerarios/\
 Formato requisição: JSON\
 Exemplo do body:\
-   [
+   
     {
         
         "idlinha": "66666666",
@@ -79,7 +79,7 @@ Exemplo do body:\
             }
         }
     }
-]
+
 \
 \
 -Consultar pelo ID:\
@@ -92,9 +92,9 @@ Método: GET\
 URL: /testeBackEnd/itinerarios/byLinha/{idLinha} - infomar id da linha que deseja-se consultar o itinerário\
 exemplo: /testeBackEnd/itinerarios/byLinha/5518
 \
-Consultas TODAS:\
+Consultar TODOS:\
 Método: GET\
-URL: /testeBackEnd/itinerarios/all
+URL: /testeBackEnd/itinerarios/all\
 exemplo: /testeBackEnd/itinerarios/all\
 \
 -Deletar itinerario :\
@@ -102,6 +102,25 @@ Método: DELETE\
 URL: /testeBackEnd/itinerarios/delete/{id} - informar o ID do itinerário que deseja-se excluir
 exemplo: /testeBackEnd/itinerarios/delete/60314da06d318e252e5fb1f1\
 \
+**PONTOS DE TÁXI**\
+Consultar TODOS:\
+Método: GET\
+URL: /testeBackEnd/pontosDeTaxi/all\
+exemplo: /testeBackEnd/pontosDeTaxi/all\
+\
+-Cadastrar:\
+Descrição: Método para cadastrar um ponto de táxi\
+Método: POST\
+URL: /testeBackEnd/pontosDeTaxi/\
+Formato requisição: JSON\
+Exemplo do body:\
+  {
+        "nomeDoPonto": "PONTO DO GEOVANE",
+        "latitude": "-41.12373379817800000",
+        "longitutde": "-62.22266028234100000",
+        "dataHoraCadastro": "2020-02-10T16:14:34.828"
+    }
+
 #### Justificativas
 Spring = facilita todo o processo de desenvolvimento na parte do java.\
 MongoDB: pois oferece um desempenho muito bom, e não há necessidade de fazer "JOIN" entre as tabelas, portanto não há necessidade bd relacional.
