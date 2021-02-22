@@ -40,7 +40,19 @@ exemplo: /testeBackEnd/linhaOnibus/all\
 -Deletar linha :\
 Método: DELETE\
 URL: /testeBackEnd/linhaOnibus/delete/{id} - informar o ID da linha que deseja-se excluir
-Formato requisição: JSON
-exemplo: /testeBackEnd/linhaOnibus/delete/5518
-
-
+exemplo: /testeBackEnd/linhaOnibus/delete/5518\
+\
+-Buscar linhas dentro de um raio:\
+Descrição: filtro de linhas por meio de um raio. Exemplo: passando uma atitude, longitude e um raio em KM, traz as as linhas dentro do raio informado.\
+Método: POST\
+URL: /testeBackEnd/linhaOnibus/dentroDoRaio\
+Formato requisição: JSON\
+Exemplo do body:\
+   {
+    "latitude": -29.0485523,
+    "longitude": -51.1849287,
+    "raio": 1
+}
+\
+\
+**ITINERÁRIOS**\
