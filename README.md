@@ -102,7 +102,7 @@ Método: DELETE\
 URL: /testeBackEnd/itinerarios/delete/{id} - informar o ID do itinerário que deseja-se excluir
 exemplo: /testeBackEnd/itinerarios/delete/60314da06d318e252e5fb1f1\
 \
-#### Justificativas\
+#### Justificativas
 Spring = facilita todo o processo de desenvolvimento na parte do java.\
 MongoDB: pois oferece um desempenho muito bom, e não há necessidade de fazer "JOIN" entre as tabelas, portanto não há necessidade bd relacional.
 
